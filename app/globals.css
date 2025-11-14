@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 214 100% 98%;
+  --foreground: 222 47% 11%;
+}
+
+body {
+  @apply bg-sky-50 text-slate-900 antialiased;
+}
+
+main {
+  @apply flex-1;
+}
+
+.gradient-hero {
+  background: radial-gradient(circle at top left, #e0f7f6, #a5e5ff 40%, #e0f2ff 80%);
+}
+
+.card-glass {
+  @apply bg-white/80 backdrop-blur-xl shadow-soft rounded-2xl;
+}
