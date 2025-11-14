@@ -7,25 +7,25 @@ const steps = [
     icon: Phone,
     title: "Schedule Pickup",
     text: "Call us, WhatsApp or book online with your preferred time slot.",
-    image: "/test.JPG", // change to your real image
+    image: "/shedule2.jpg", // change to your real image
   },
   {
     icon: WashingMachine,
     title: "We Clean with Care",
     text: "Items are tagged, cleaned and pressed according to fabric type.",
-    image: "/test.JPG",
+    image: "/shedule4.jpg",
   },
   {
     icon: Sparkles,
     title: "Quality Check",
     text: "Every piece is inspected and carefully packed for delivery.",
-    image: "/test.JPG",
+    image: "/shedule1.jpg",
   },
   {
     icon: Truck,
     title: "Delivery to Your Door",
     text: "We deliver your order back, ready to wear or neatly folded.",
-    image: "/test.JPG",
+    image: "/shedule3.JPG",
   },
 ];
 

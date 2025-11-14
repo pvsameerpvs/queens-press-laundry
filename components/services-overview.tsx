@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+import type React from "react";
 import {
   WashingMachine,
   Shirt,
@@ -43,6 +45,18 @@ const services = [
 ];
 
 export function ServicesOverview({ detailed }: ServicesOverviewProps) {
+  // Group pricingItems by category to build a nice menu
+  const groupedMenu = useMemo(() => {
+    return pricingItems.reduce<Record<string, typeof pricingItems>>(
+      (acc, item) => {
+        if (!acc[item.category]) acc[item.category] = [];
+        acc[item.category].push(item);
+        return acc;
+      },
+      {}
+    );
+  }, []);
+
   return (
     <section className="py-12 md:py-16 space-y-10">
       {/* top two-column layout */}
@@ -82,29 +96,102 @@ export function ServicesOverview({ detailed }: ServicesOverviewProps) {
         </div>
       </div>
 
-      {/* pricing table below */}
+      {/* Aesthetic Laundry Menu */}
       {detailed && (
-        <div className="mt-4 overflow-x-auto">
-          <table className="min-w-full text-sm border border-sky-100 rounded-xl overflow-hidden bg-white/80">
-            <thead className="bg-sky-50 text-slate-700">
-              <tr>
-                <th className="px-4 py-2 text-left">Item</th>
-                <th className="px-4 py-2 text-left">Service</th>
-                <th className="px-4 py-2 text-right">Starting from (AED)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pricingItems.map((item) => (
-                <tr key={item.id} className="border-t border-sky-100">
-                  <td className="px-4 py-2">{item.name}</td>
-                  <td className="px-4 py-2">{item.category}</td>
-                  <td className="px-4 py-2 text-right">
-                    {item.price.toFixed(2)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-4 rounded-3xl border border-sky-100 bg-white/80 p-4 md:p-6">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.5fr),minmax(0,1fr)] items-start">
+            {/* LEFT: scrollable menu list */}
+            <div className="space-y-4 max-h-[420px] overflow-y-auto pr-1 [-webkit-overflow-scrolling:touch]">
+              <div className="flex items-baseline justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                    Service Menu
+                  </p>
+                  <h3 className="text-lg md:text-xl font-semibold tracking-tight">
+                    Popular laundry & dry cleaning items
+                  </h3>
+                </div>
+                <span className="rounded-full bg-sky-50 px-3 py-1 text-[11px] font-medium text-sky-700 border border-sky-100">
+                  Prices are “starting from”
+                </span>
+              </div>
+
+              <div className="space-y-5">
+                {Object.entries(groupedMenu).map(([category, items]) => (
+                  <div
+                    key={category}
+                    className="pt-3 border-t border-sky-100/70 first:pt-0 first:border-t-0"
+                  >
+                    <h4 className="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-2">
+                      {category}
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {items.map((item) => (
+                        <li
+                          key={item.id}
+                          className="flex items-baseline justify-between gap-3 rounded-xl px-2 py-1.5 hover:bg-sky-50/70 transition"
+                        >
+                          <div>
+                            <p className="text-sm font-medium text-slate-800">
+                              {item.name}
+                            </p>
+                            <p className="text-[11px] text-slate-400">From</p>
+                          </div>
+                          <p className="text-sm font-semibold text-sky-900 tabular-nums">
+                            AED {item.price.toFixed(2)}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT: centre/side image showcase */}
+            <div className="hidden lg:block">
+              <div className="relative mx-auto max-w-sm aspect-[3/4] rounded-[2rem] overflow-hidden border border-slate-200 bg-[#ccebe7]">
+                {/* Soft gradient overlay keeps aesthetic, but on your color */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_0%,rgba(255,255,255,0.35)_0,transparent_45%),radial-gradient(circle_at_90%_100%,rgba(255,255,255,0.3)_0,transparent_40%)]" />
+
+                <div className="relative h-full flex flex-col items-center justify-between p-6">
+                  <div className="text-center space-y-2">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-700">
+                      Queens Press Laundry
+                    </p>
+                    <p className="text-base font-semibold text-slate-800">
+                      Same–day & next–day service available
+                    </p>
+                    <p className="text-xs text-slate-600">
+                      Add your items from this menu and our team will confirm
+                      the final quote after inspection.
+                    </p>
+                  </div>
+
+                  <div className="w-full rounded-2xl bg-white/80 border border-slate-200 p-3 text-xs text-slate-600 space-y-1 shadow-sm">
+                    <p className="font-semibold text-slate-800">
+                      Pro tip for guests
+                    </p>
+                    <p>
+                      Separate delicate pieces like silk, abayas and suits in a
+                      different bag and mention it to our rider for extra care.
+                    </p>
+                  </div>
+
+                  <div className="text-[11px] text-slate-600 text-center">
+                    *Stain treatment, express service and special fabrics may
+                    have additional charges.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* On mobile, we can show a compact info block instead of big image */}
+            <div className="lg:hidden text-[11px] text-slate-500 border-t border-sky-100 pt-3 mt-2">
+              *Stain treatment, express service and special fabrics may have
+              additional charges. Final prices are confirmed after inspection.
+            </div>
+          </div>
         </div>
       )}
     </section>

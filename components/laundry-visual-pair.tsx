@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import ironingMan from "@/public/service.jpg";
-import foldedJeans from "@/public/1.png";
+import foldedJeans from "@/public/3.png";
 
 export function LaundryVisualPair() {
   return (

@@ -7,25 +7,25 @@ const items = [
     icon: ShieldCheck,
     title: "Licensed & Experienced",
     text: "Serving Dubai with professional dry cleaning services since 1991.",
-    image: "/hero2.png",
+    image: "/service1.jpg",
   },
   {
     icon: Shirt,
     title: "Premium Cleaning",
     text: "Gentle on fabrics, tough on stains with modern machines and solvents.",
-    image: "/hero2.png",
+    image: "/service21.jpg.jpg",
   },
   {
     icon: Truck,
     title: "Pickup & Delivery",
     text: "Free pickup & delivery in selected areas with flexible time slots.",
-    image: "/hero2.png",
+    image: "/service22.jpg.jpg",
   },
   {
     icon: Sparkles,
     title: "Same-Day Available",
     text: "Express options for urgent items like suits, uniforms and abayas.",
-    image: "/hero2.png",
+    image: "/service23.jpg.jpg",
   },
 ];
 

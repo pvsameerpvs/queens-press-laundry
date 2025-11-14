@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import hero from "@/public/placeholder-about.jpg";
+import hero from "@/public/shedule2.jpg";
 
 export const metadata: Metadata = {
-  title: "About Us | Queens Press Laundry"
+  title: "About Us | Queens Press Laundry",
 };
 
 export default function AboutPage() {
