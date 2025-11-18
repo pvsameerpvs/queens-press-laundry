@@ -51,6 +51,14 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
     });
   };
 
+  const decrementQuantity = (id: string) => {
+    setQuantities((prev) => {
+      const current = prev[id] ?? 0;
+      const next = Math.max(0, current - 1);
+      return { ...prev, [id]: next };
+    });
+  };
+
   const handleSend = () => {
     const branch = branches.find((b) => b.id === branchId) ?? branches[0];
     const url = createWhatsappUrl({
@@ -72,13 +80,13 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
     }
   };
 
-  // Updated main container: no border, no card-glass, nicer UI
+  // Main container styles
   const containerClass = highlight
     ? "bg-white rounded-2xl p-6 md:p-8 shadow-lg ring-1 ring-brand/25"
     : "bg-white rounded-2xl p-6 md:p-8 shadow-sm";
 
   return (
-    <section className="space-y-5 md:space-y-6 container">
+    <section className="space-y-5 md:space-y-6">
       {/* Heading + total */}
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
@@ -91,7 +99,14 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
             details pre-filled so you can confirm with our team.
           </p>
         </div>
-        <div className="card-glass px-5 py-3 flex items-center gap-3 justify-between md:justify-end min-w-[220px]">
+
+        {/* 🔹 Sticky on mobile, normal on desktop */}
+        <div
+          className="
+            card-glass px-5 py-3 flex items-center gap-3 justify-between md:justify-end min-w-[220px]
+            sticky top-0 z-30 bg-white/95 backdrop-blur md:static md:bg-transparent
+          "
+        >
           <div className="flex flex-col">
             <span className="text-[11px] uppercase tracking-wide text-slate-500">
               Estimated Total
@@ -103,7 +118,7 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
         </div>
       </div>
 
-      {/* Main card – now clean, rounded, no border */}
+      {/* Main card */}
       <div className={containerClass}>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
           {/* Left: customer details */}
@@ -188,21 +203,33 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
             </div>
           </div>
 
-          {/* Right: items as cards + CTA */}
+          {/* Right: items + CTA */}
           <div className="space-y-5">
+            {/* Header with mobile total on the right */}
             <div className="flex items-center justify-between gap-2">
               <div>
                 <p className="text-sm font-semibold text-slate-800">
                   Items for Estimate
                 </p>
                 <p className="text-[11px] text-slate-500">
-                  Tap a card to add 1 item, or enter quantity manually.
+                  Tap a card to add 1 item, or adjust using - / +.
                 </p>
+              </div>
+
+              {/* MOBILE PRICE (right side) */}
+              <div className="md:hidden text-right">
+                <span className="block text-[10px] uppercase text-slate-500">
+                  Total
+                </span>
+                <span className="text-lg font-semibold text-brand-dark leading-none">
+                  AED {total.toFixed(2)}
+                </span>
               </div>
             </div>
 
+            {/* Items list */}
             <div className="max-h-80 overflow-y-auto pr-1 py-4 px-1">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 {pricingItems.map((item) => {
                   const qty = quantities[item.id] ?? 0;
                   const isActive = qty > 0;
@@ -232,22 +259,28 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
                           AED {item.price.toFixed(2)}
                         </span>
 
+                        {/* - qty + controls */}
                         <div
-                          className="flex items-center gap-1"
+                          className="flex items-center gap-2"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Input
-                            inputMode="numeric"
-                            className="h-7 w-14 rounded-full border-slate-200 text-right text-[12px] px-2"
-                            placeholder="0"
-                            value={qty || ""}
-                            onChange={(e) =>
-                              updateQuantity(item.id, e.target.value)
-                            }
-                          />
-                          <span className="text-[10px] text-slate-400">
-                            pcs
+                          <button
+                            type="button"
+                            className="h-7 w-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+                            onClick={() => decrementQuantity(item.id)}
+                          >
+                            -
+                          </button>
+                          <span className="w-6 text-center text-[12px]">
+                            {qty}
                           </span>
+                          <button
+                            type="button"
+                            className="h-7 w-7 rounded-full bg-brand text-white flex items-center justify-center text-xs font-bold"
+                            onClick={() => incrementQuantity(item.id)}
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
 

@@ -16,7 +16,7 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
 
   return (
     <>
-      <section className="space-y-4 container">
+      <section className="space-y-4">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-xl font-semibold tracking-tight">
             Quick Branch Selector
@@ -33,7 +33,7 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
           {branches.map((b) => (
             <div
               key={b.id}
-              className="p-0 rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex"
+              className="p-0 rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex flex-col sm:flex-row"
             >
               {/* LEFT SIDE — CONTENT */}
               <div className="flex-1 p-5 space-y-3">
@@ -74,13 +74,13 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
                 </div>
               </div>
 
-              {/* RIGHT SIDE — IMAGE */}
-              <div className="w-32 h-full hidden sm:block">
+              {/* RIGHT SIDE — IMAGE (mobile: bottom, full width) */}
+              <div className="w-full sm:w-32 h-32 sm:h-auto">
                 {b.image ? (
                   <img
                     src={b.image}
                     alt={b.title}
-                    className="w-full h-full object-cover rounded-r-2xl"
+                    className="w-full h-full object-cover sm:rounded-r-2xl rounded-b-2xl sm:rounded-b-none"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">
@@ -114,7 +114,7 @@ export function BranchDetails() {
         {branches.map((b) => (
           <section
             key={b.id}
-            className="rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex"
+            className="rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex flex-col sm:flex-row"
           >
             {/* LEFT — TEXT */}
             <div className="flex-1 p-6 space-y-3">
@@ -163,13 +163,13 @@ export function BranchDetails() {
               </div>
             </div>
 
-            {/* RIGHT — IMAGE */}
-            <div className="w-40 hidden sm:block">
+            {/* RIGHT — IMAGE (mobile: bottom) */}
+            <div className="w-full sm:w-40 h-40 sm:h-auto">
               {b.image ? (
                 <img
                   src={b.image}
                   alt={b.title}
-                  className="w-full h-full object-cover rounded-r-2xl"
+                  className="w-full h-full object-cover sm:rounded-r-2xl rounded-b-2xl sm:rounded-b-none"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">
