@@ -58,7 +58,7 @@ export function ServicesOverview({ detailed }: ServicesOverviewProps) {
   }, []);
 
   return (
-    <section className="py-12 md:py-16 space-y-10">
+    <section className="py-12 md:py-16 space-y-10 container">
       {/* top two-column layout */}
       <div className="grid gap-10 lg:grid-cols-[1fr,1.2fr] items-center">
         {/* LEFT: LaundryVisualPair */}

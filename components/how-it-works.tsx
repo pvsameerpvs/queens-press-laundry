@@ -35,7 +35,7 @@ export function HowItWorks() {
   const ActiveIcon = activeStep.icon;
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-6 container">
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
         How It Works
       </h2>

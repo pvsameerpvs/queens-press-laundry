@@ -98,17 +98,6 @@ export function SiteFooter() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-sky-100 pt-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-          <p className="text-xs text-slate-500">
-            Trade License No. <strong>122428</strong> · Dubai Department of
-            Economy & Tourism
-          </p>
-
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Queens Press Laundry. All rights
-            reserved.
-          </p>
-        </div>
       </div>
     </footer>
   );

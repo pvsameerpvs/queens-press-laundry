@@ -16,7 +16,7 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
 
   return (
     <>
-      <section className="space-y-4">
+      <section className="space-y-4 container">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-xl font-semibold tracking-tight">
             Quick Branch Selector
@@ -31,39 +31,62 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
 
         <div className="grid md:grid-cols-3 gap-4">
           {branches.map((b) => (
-            <div key={b.id} className="card-glass p-5 space-y-3">
-              <div className="space-y-1">
-                <h3 className="font-semibold">{b.title}</h3>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
-                  {b.subtitle}
-                </p>
+            <div
+              key={b.id}
+              className="p-0 rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex"
+            >
+              {/* LEFT SIDE — CONTENT */}
+              <div className="flex-1 p-5 space-y-3">
+                <div className="space-y-1">
+                  <h3 className="font-semibold">{b.title}</h3>
+                  <p className="text-xs uppercase tracking-wide text-slate-500">
+                    {b.subtitle}
+                  </p>
+                </div>
+
+                <p className="text-sm text-slate-600">{b.address}</p>
+
+                <div className="flex flex-col gap-2 text-sm">
+                  {/* PHONE */}
+                  <div className="inline-flex items-center gap-2 text-slate-700">
+                    <Phone className="h-4 w-4" />
+                    <a
+                      href={`tel:${b.phone}`}
+                      className="underline-offset-2 hover:underline"
+                    >
+                      {b.phoneDisplay}
+                    </a>
+                  </div>
+
+                  {/* MAP BUTTON */}
+                  <div className="inline-flex items-center gap-2 text-slate-700">
+                    <MapPin className="h-4 w-4" />
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="rounded-full"
+                      type="button"
+                      onClick={() => setActiveBranch(b)}
+                    >
+                      View on Map
+                    </Button>
+                  </div>
+                </div>
               </div>
 
-              <p className="text-sm text-slate-600">{b.address}</p>
-
-              <div className="flex flex-col gap-2 text-sm">
-                <div className="inline-flex items-center gap-2 text-slate-700">
-                  <Phone className="h-4 w-4" />
-                  <a
-                    href={`tel:${b.phone}`}
-                    className="underline-offset-2 hover:underline"
-                  >
-                    {b.phoneDisplay}
-                  </a>
-                </div>
-
-                <div className="inline-flex items-center gap-2 text-slate-700">
-                  <MapPin className="h-4 w-4" />
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="rounded-full"
-                    type="button"
-                    onClick={() => setActiveBranch(b)}
-                  >
-                    View on Map
-                  </Button>
-                </div>
+              {/* RIGHT SIDE — IMAGE */}
+              <div className="w-32 h-full hidden sm:block">
+                {b.image ? (
+                  <img
+                    src={b.image}
+                    alt={b.title}
+                    className="w-full h-full object-cover rounded-r-2xl"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">
+                    No Image
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -78,6 +101,10 @@ export function BranchSelector({ compact }: BranchSelectorProps) {
   );
 }
 
+/* --------------------------------------
+   BRANCH DETAILS (image RIGHT SIDE)
+-------------------------------------- */
+
 export function BranchDetails() {
   const [activeBranch, setActiveBranch] = useState<Branch | null>(null);
 
@@ -85,45 +112,70 @@ export function BranchDetails() {
     <>
       <div className="space-y-8">
         {branches.map((b) => (
-          <section key={b.id} className="card-glass p-6 space-y-3">
-            <h2 className="text-xl font-semibold">{b.fullTitle}</h2>
-            <p className="text-sm text-slate-600">{b.address}</p>
-            <p className="text-sm text-slate-600">
-              Phone:{" "}
-              <a
-                href={`tel:${b.phone}`}
-                className="underline-offset-2 hover:underline"
-              >
-                {b.phoneDisplay}
-              </a>
-            </p>
-            <p className="text-sm text-slate-600">
-              Opening hours: <strong>9:00 AM – 11:00 PM</strong>
-            </p>
-            <p className="text-sm text-slate-600">{b.note}</p>
+          <section
+            key={b.id}
+            className="rounded-2xl border border-slate-200 bg-[#D7F3F3] shadow-sm overflow-hidden flex"
+          >
+            {/* LEFT — TEXT */}
+            <div className="flex-1 p-6 space-y-3">
+              <h2 className="text-xl font-semibold">{b.fullTitle}</h2>
 
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="rounded-full"
-                onClick={() => setActiveBranch(b)}
-              >
-                <MapPin className="h-4 w-4 mr-2" />
-                View on Map
-              </Button>
+              <p className="text-sm text-slate-600">{b.address}</p>
 
-              <Button
-                asChild
-                variant="ghost"
-                size="sm"
-                className="rounded-full text-slate-600"
-              >
-                <a href={b.mapUrl} target="_blank" rel="noreferrer">
-                  Open in Google Maps
+              <p className="text-sm text-slate-600">
+                Phone:{" "}
+                <a
+                  href={`tel:${b.phone}`}
+                  className="underline-offset-2 hover:underline"
+                >
+                  {b.phoneDisplay}
                 </a>
-              </Button>
+              </p>
+
+              <p className="text-sm text-slate-600">
+                Opening hours: <strong>9:00 AM – 11:00 PM</strong>
+              </p>
+
+              {b.note && <p className="text-sm text-slate-600">{b.note}</p>}
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => setActiveBranch(b)}
+                >
+                  <MapPin className="h-4 w-4 mr-2" />
+                  View on Map
+                </Button>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="sm"
+                  className="rounded-full text-slate-600"
+                >
+                  <a href={b.mapUrl} target="_blank" rel="noreferrer">
+                    Open in Google Maps
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            {/* RIGHT — IMAGE */}
+            <div className="w-40 hidden sm:block">
+              {b.image ? (
+                <img
+                  src={b.image}
+                  alt={b.title}
+                  className="w-full h-full object-cover rounded-r-2xl"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">
+                  No Image
+                </div>
+              )}
             </div>
           </section>
         ))}

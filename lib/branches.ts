@@ -1,6 +1,7 @@
 // src/lib/branches.ts
 
 export interface Branch {
+  image: any;
   id: string;
   title: string;
   fullTitle: string;
@@ -18,6 +19,7 @@ export const branches: Branch[] = [
     title: "Bur Dubai Branch",
     fullTitle: "Bur Dubai – Al Rais Shopping Center",
     subtitle: "Queens Press Laundry, Bur Dubai",
+    image:"/branch.png",
     address:
       "Queens Press Laundry, Al Rais Shopping Center, near Al Khaleej Center, Shop 10, Ground Floor, Bur Dubai, Dubai, UAE.",
     phone: "+971523346850",
@@ -29,6 +31,7 @@ export const branches: Branch[] = [
   {
     id: "jumeirah-1",
     title: "Jumeirah 1 Branch",
+    image:"/about.png",
     fullTitle: "Jumeirah 1 – The Court Residence",
     subtitle: "Queens Press Laundry, Jumeirah 1",
     address:
@@ -44,6 +47,7 @@ export const branches: Branch[] = [
     title: "Port Rashid / Mina Street Branch",
     fullTitle: "Port Rashid – Mina Street (7 Pearl Apartments)",
     subtitle: "Queens Press Laundry, Port Rashid",
+    image:"/branch2.png",
     address:
       "Queens Press Laundry, 7 Pearl Apartment Complex, Mina Street, Shop 40, Dubai, UAE.",
     phone: "+971523346850",

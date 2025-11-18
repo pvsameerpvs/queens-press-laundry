@@ -78,7 +78,7 @@ export function WhatsappOrderSection({ highlight }: WhatsappOrderSectionProps) {
     : "bg-white rounded-2xl p-6 md:p-8 shadow-sm";
 
   return (
-    <section className="space-y-5 md:space-y-6">
+    <section className="space-y-5 md:space-y-6 container">
       {/* Heading + total */}
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">

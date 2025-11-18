@@ -31,7 +31,7 @@ const items = [
 
 export function ValuePropsSection() {
   return (
-    <section className="max-w-6xl mx-auto space-y-8">
+    <section className="max-w-6xl mx-auto space-y-10 py-10 ">
       {/* HEADER AREA */}
       <div className="max-w-2xl space-y-3">
         <p className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-dark">

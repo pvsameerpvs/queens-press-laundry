@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { PhoneCall, Menu } from "lucide-react";
 
 const navItems = [
@@ -22,55 +21,53 @@ export function SiteHeader({ openMobile }: { openMobile: () => void }) {
   return (
     <header className="sticky top-0 z-40 bg-sky-50/80 backdrop-blur border-b border-sky-100">
       <div className="container py-3">
-        {/* Top row: logo + actions */}
+        {/* Top row */}
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 min-w-0">
-            <div className="h-11 w-11 rounded-2xl bg-brand-dark text-white flex items-center justify-center text-xl font-bold shadow-soft">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="h-11 w-11 rounded-2xl bg-brand-dark text-white flex items-center justify-center text-xl font-bold shadow-md">
               QP
             </div>
-            <div className="flex flex-col leading-tight overflow-hidden">
-              <span className="font-semibold text-base sm:text-lg truncate">
+            <div className="leading-tight">
+              <span className="font-semibold text-base sm:text-lg block">
                 Queens Press Laundry
               </span>
-              <span className="text-[11px] sm:text-xs text-slate-500 truncate">
+              <span className="text-[11px] sm:text-xs text-slate-500">
                 Dubai Dry Cleaning
               </span>
             </div>
           </Link>
 
-          {/* Right side actions */}
+          {/* Right actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Desktop call button */}
             <Button
               asChild
               size="sm"
-              className="hidden lg:inline-flex rounded-full bg-brand-dark hover:bg-brand"
+              className="hidden lg:inline-flex rounded-full bg-brand-dark hover:bg-brand shadow"
             >
               <a href="tel:+97143522933" className="flex items-center gap-2">
                 <PhoneCall className="h-4 w-4" />
-                <span>Call Bur Dubai</span>
+                Call Bur Dubai
               </a>
             </Button>
 
-            {/* Mobile icon-only call */}
+            {/* Mobile call button */}
             <Button
               asChild
               size="icon"
-              className="inline-flex lg:hidden rounded-full bg-brand-dark hover:bg-brand"
+              className="lg:hidden rounded-full bg-brand-dark hover:bg-brand shadow"
             >
               <a href="tel:+97143522933">
                 <PhoneCall className="h-4 w-4" />
               </a>
             </Button>
 
-            {/* <ThemeToggle /> */}
-
-            {/* Mobile menu button */}
+            {/* Menu icon */}
             <Button
               variant="outline"
               size="icon"
-              className="xl:hidden rounded-full"
+              className="xl:hidden rounded-full shadow-sm"
               onClick={openMobile}
             >
               <Menu className="h-5 w-5" />
@@ -78,11 +75,14 @@ export function SiteHeader({ openMobile }: { openMobile: () => void }) {
           </div>
         </div>
 
-        {/* Bottom row: desktop nav */}
-        <div className="mt-3 hidden xl:block">
-          <nav className="flex items-center justify-center gap-2 rounded-full bg-white/80 border border-sky-100 px-2 py-1 overflow-x-auto">
+        {/* Desktop nav */}
+        <div className="mt-3 hidden xl:flex justify-center">
+          <nav className="flex items-center gap-2 px-3 py-1.5 ">
             {navItems.map((item) => {
-              const active = pathname === item.href;
+              const active =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href));
+
               return (
                 <Link
                   key={item.href}
