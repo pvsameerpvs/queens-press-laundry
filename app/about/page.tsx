@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className=" relative overflow-hidden">
+    <div className=" container relative overflow-hidden">
       {/* Curved Line Background */}
       <svg
         className="absolute top-0 left-0 w-full h-full opacity-60 pointer-events-none"

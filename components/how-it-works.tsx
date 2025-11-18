@@ -7,7 +7,7 @@ const steps = [
     icon: Phone,
     title: "Schedule Pickup",
     text: "Call us, WhatsApp or book online with your preferred time slot.",
-    image: "/shedule2.jpg", // change to your real image
+    image: "/shedule2.jpg",
   },
   {
     icon: WashingMachine,
@@ -35,13 +35,41 @@ export function HowItWorks() {
   const ActiveIcon = activeStep.icon;
 
   return (
-    <section className="space-y-6 container">
+    <section className="space-y-6 ">
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
         How It Works
       </h2>
 
-      {/* STEPPER */}
-      <div className="w-full overflow-hidden  ">
+      {/* MOBILE STEPPER (rounded pills, scrollable) */}
+      <div className="w-full md:hidden">
+        <div className="flex gap-3 overflow-x-auto pb-1 -mx-1 px-1">
+          {steps.map((step, index) => {
+            const isActive = index === activeIndex;
+            const Icon = step.icon;
+            return (
+              <button
+                key={step.title}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap border transition-all ${
+                  isActive
+                    ? "bg-[#5ea9a1] text-white border-[#5ea9a1]"
+                    : "bg-white text-[#4b7a74] border-[#c4e3df]"
+                }`}
+              >
+                <span className="h-6 w-6 rounded-full bg-[#e5f4f2] flex items-center justify-center text-[11px] text-[#2f605b]">
+                  {index + 1}
+                </span>
+                <Icon className="h-3.5 w-3.5 opacity-80" />
+                <span className="truncate max-w-[120px]">{step.title}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* DESKTOP STEPPER (your original UI, unchanged) */}
+      <div className="w-full overflow-hidden hidden md:block">
         <div className="flex">
           {steps.map((step, index) => {
             const stepNumber = index + 1;

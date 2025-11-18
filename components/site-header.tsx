@@ -8,9 +8,9 @@ import { PhoneCall, Menu } from "lucide-react";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services & Prices" },
-  { href: "/branches", label: "Branches" },
-  { href: "/pickup-delivery", label: "Pickup & Delivery" },
   { href: "/about", label: "About Us" },
+  { href: "/pickup-delivery", label: "Pickup & Delivery" },
+  { href: "/branches", label: "Branches" },
   { href: "/offers", label: "Offers" },
   { href: "/contact", label: "Contact" },
 ];

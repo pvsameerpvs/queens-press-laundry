@@ -3,8 +3,11 @@ import { Facebook, Instagram } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-sky-100 bg-sky-50/80 mt-12">
-      <div className="container py-10 space-y-10 text-sm">
+    <footer
+      className="border-t border-sky-100"
+      style={{ backgroundColor: "#D7F3F3" }}
+    >
+      <div className="container py-10 space-y-10 text-sm mt-12">
         {/* TOP GRID */}
         <div className="grid md:grid-cols-4 gap-10">
           {/* ABOUT */}
