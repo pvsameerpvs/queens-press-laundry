@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import hero from "@/public/about.png";
+import hero from "@/public/about-1.png";
 import { ValuePropsSection } from "@/components/value-props";
 import { HowItWorks } from "@/components/how-it-works";
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
       <div className=" py-12 space-y-10 relative z-10">
         <section className="grid md:grid-cols-[0.9fr,1.1fr] gap-10 items-center">
           {/* LEFT — Image */}
-          <div className="relative h-72 md:h-full rounded-2xl overflow-hidden shadow-soft order-1 md:order-none bg-white/40 backdrop-blur-sm">
+          <div className="relative h-56 md:h-80 rounded-2xl overflow-hidden shadow-soft order-1 md:order-none bg-white/40 backdrop-blur-sm">
             <Image
               src={hero}
               alt="Queens Press Laundry staff working"
