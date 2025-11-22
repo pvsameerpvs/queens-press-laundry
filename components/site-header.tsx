@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { PhoneCall, Menu } from "lucide-react";
@@ -25,14 +26,36 @@ export function SiteHeader({ openMobile }: { openMobile: () => void }) {
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-2xl bg-brand-dark text-white flex items-center justify-center text-xl font-bold shadow-md">
-              QP
+            <div className="h-14 w-14 lg:h-20 lg:w-20  flex items-center justify-center  overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="h-full w-full object-cover"
+              />
             </div>
+
             <div className="leading-tight">
-              <span className="font-semibold text-base sm:text-lg block">
-                Queens Press Laundry
-              </span>
-              <span className="text-[11px] sm:text-xs text-slate-500">
+              {/* Desktop (Normal 2-line) */}
+              <div className="hidden sm:block">
+                <span className="font-semibold text-base sm:text-lg block">
+                  Queens Press Laundry
+                </span>
+                <span className="text-[11px] sm:text-xs text-slate-500">
+                  Dubai Dry Cleaning
+                </span>
+              </div>
+
+              {/* Mobile (One-line name) */}
+              <div className="sm:hidden">
+                <span className="font-semibold text-sm block">
+                  Queens Press Laundry
+                </span>
+              </div>
+
+              {/* Location (Common – shown below in mobile only) */}
+              <span className="text-[10px] text-slate-500 block sm:hidden">
                 Dubai Dry Cleaning
               </span>
             </div>
