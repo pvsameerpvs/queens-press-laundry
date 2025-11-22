@@ -71,7 +71,7 @@ export function SiteHeader({ openMobile }: { openMobile: () => void }) {
             >
               <a href="tel:+97143522933" className="flex items-center gap-2">
                 <PhoneCall className="h-4 w-4" />
-                Call Bur Dubai
+                We’re Here to Help
               </a>
             </Button>
 

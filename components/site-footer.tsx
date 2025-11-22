@@ -21,14 +21,14 @@ export function SiteFooter() {
             {/* SOCIAL */}
             <div className="flex items-center gap-4 pt-2">
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/queens.laundry_/"
                 target="_blank"
                 className="text-slate-600 hover:text-brand-dark transition"
               >
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61583607283437"
                 target="_blank"
                 className="text-slate-600 hover:text-brand-dark transition"
               >
