@@ -7,7 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { createWhatsappContactUrl } from "@/lib/whatsapp";
 import { branches } from "@/lib/branches";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Send } from "lucide-react";
 
 export function ContactForm() {
@@ -25,7 +31,7 @@ export function ContactForm() {
       name,
       mobile,
       email,
-      message
+      message,
     });
 
     if (typeof window !== "undefined") {
@@ -34,10 +40,7 @@ export function ContactForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="card-glass p-6 space-y-4"
-    >
+    <form onSubmit={handleSubmit} className="card-glass p-6 space-y-4">
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="contact-name">Name</Label>
@@ -93,10 +96,7 @@ export function ContactForm() {
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
-      <Button
-        type="submit"
-        className="rounded-full flex items-center gap-2"
-      >
+      <Button type="submit" className="rounded-full flex items-center gap-2">
         <Send className="h-4 w-4" />
         Send via WhatsApp
       </Button>

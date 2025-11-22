@@ -2,13 +2,7 @@
 
 import { useMemo } from "react";
 import type React from "react";
-import {
-  WashingMachine,
-  Shirt,
-  Sofa,
-  Briefcase,
-  ArrowRightCircle,
-} from "lucide-react";
+import { WashingMachine, Shirt, Sofa, Briefcase, Box } from "lucide-react";
 import { pricingItems } from "@/lib/pricing";
 import { LaundryVisualPair } from "./laundry-visual-pair";
 
@@ -28,7 +22,7 @@ const services = [
     text: "Everyday laundry washed, dried and neatly folded by kilogram.",
   },
   {
-    icon: Shirt,
+    icon: Box,
     title: "Ironing Only",
     text: "Crisp pressing for shirts, trousers, uniforms and more.",
   },
@@ -226,9 +220,6 @@ function ServiceRow({ icon: Icon, title, text, index }: RowProps) {
           </div>
 
           {/* CLICKABLE ARROW -> /services */}
-          <a href="/services">
-            <ArrowRightCircle className="h-4 w-4 text-slate-300 group-hover:text-brand-dark transition cursor-pointer" />
-          </a>
         </div>
 
         <h3 className="text-sm md:text-base font-semibold">{title}</h3>

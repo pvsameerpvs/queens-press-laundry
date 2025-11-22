@@ -37,7 +37,7 @@ export default function OffersPage() {
             <div className="flex flex-wrap gap-3">
               <Link href="/services">
                 <button className="px-5 py-2.5 rounded-full bg-purple-700 text-white text-sm font-semibold shadow-md hover:bg-purple-800 transition">
-                  View Packages
+                  View Price List
                 </button>
               </Link>
 
@@ -166,8 +166,8 @@ export default function OffersPage() {
                 Corporate &amp; Hotel
               </h3>
               <p className="text-sm text-slate-700">
-                Tailored solutions for hotels, offices, restaurants and staff
-                housing.
+                Big offers available for hotels, offices, restaurants, and staff
+                housing including Emirates staff.
               </p>
               <ul className="text-sm text-slate-700 list-disc pl-5 space-y-1">
                 <li>Staff uniform cleaning</li>

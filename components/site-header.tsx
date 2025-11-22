@@ -26,7 +26,7 @@ export function SiteHeader({ openMobile }: { openMobile: () => void }) {
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="h-14 w-14 lg:h-20 lg:w-20  flex items-center justify-center  overflow-hidden">
+            <div className="h-14 w-14 lg:h-17 lg:w-17  flex items-center justify-center  overflow-hidden">
               <Image
                 src="/logo.png"
                 alt="Logo"
