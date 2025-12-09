@@ -1,7 +1,7 @@
 import type { Branch } from "@/lib/branches";
 import type { PricingItem } from "@/lib/pricing";
 
-const DEFAULT_WHATSAPP_NUMBER = "+971523346850";
+const DEFAULT_WHATSAPP_NUMBER = "+971552262769";
 
 interface OrderItem {
   item: PricingItem;

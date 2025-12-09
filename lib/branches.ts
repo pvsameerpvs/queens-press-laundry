@@ -22,7 +22,7 @@ export const branches: Branch[] = [
     image:"/branch.png",
     address:
       "Queens Press Laundry, Al Rais Shopping Center, near Al Khaleej Center, Shop 10, Ground Floor, Bur Dubai, Dubai, UAE.",
-    phone: "+971523346850",
+    phone: "+971557356374",
     phoneDisplay: "04 352 2933",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.5255997164423!2d55.29403160915897!3d25.25680333390518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f433da60d3b11%3A0xf34a9a7b530fa88e!2sQueens%20Press%20Laundry!5e0!3m2!1sen!2sae!4v1763034575682!5m2!1sen!2sae",
@@ -36,7 +36,7 @@ export const branches: Branch[] = [
     subtitle: "Queens Press Laundry, Jumeirah 1",
     address:
       "Queens Press Laundry, The Court – Residence Building, Jumeirah 1, Shop 1 – Ground Floor, Dubai, UAE.",
-    phone: "+971523346850",
+    phone: "+971529115312",
     phoneDisplay: "04 349 7342",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.295442771162!2d55.2601509!3d25.226972200000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43477af4fe51%3A0x82cd76add5c0aec7!2sThe%20Court%20-%20Residence%20-%20Jumeirah%201!5e0!3m2!1sen!2sae!4v1763034895669!5m2!1sen!2sae",
@@ -50,7 +50,7 @@ export const branches: Branch[] = [
     image:"/branch2.png",
     address:
       "Queens Press Laundry, 7 Pearl Apartment Complex, Mina Street, Shop 40, Dubai, UAE.",
-    phone: "+971523346850",
+    phone: "+971506506144",
     phoneDisplay: "04 266 9317",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.295442771162!2d55.2601509!3d25.226972200000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43477af4fe51%3A0x82cd76add5c0aec7!2sThe%20Court%20-%20Residence%20-%20Jumeirah%201!5e0!3m2!1sen!2sae!4v1763034921154!5m2!1sen!2sae",
